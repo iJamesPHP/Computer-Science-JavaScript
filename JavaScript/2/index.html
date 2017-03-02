@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>James' Computer Science Hub</title>
+    <link href="../../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../css/homepage.css" rel="stylesheet">
+    <link href="../../css/style.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="page-header">
+          <h1>JavaScript Arrays <small><span class="glyphicon glyphicon-question-sign"></span> Question 1</span></small></h1>
+      </div>
+      <h2>Array <code>products</code> currently looks like:</h2>
+      <ul id="arrayList"></ul>
+      <br>
+      <button type="button" onclick="orderArrayAlphabetically(products)" class="btn btn-primary btn-md">
+        Order <code>products</code> alphabetically
+      </button>
+      <button type="button" onclick="countItemsInArray(products)" class="btn btn-success btn-md">
+        Count items in <code>products</code>
+      </button>
+    </div>
+
+    <footer class="footer">
+      <div class="container text-center">
+        <p class="text-muted" style="margin-top: 20px">Site written & designed by James Latham for UTC@MediaCityUK Computer Science Work</p>
+      </div>
+    </footer>
+
+    <script type="text/javascript">
+      function displayArray (array, list)
+      {
+        var list = document.getElementById(list);
+        while (list.firstChild) {
+          list.removeChild(list.firstChild);
+        }
+        for (var i = 0; i < array.length; i++) {
+          item = array[i];
+          var li = document.createElement('li');
+          li.innerHTML = i + '. ' + item;
+          list.appendChild(li);
+        }
+      }
+
+      function orderArrayAlphabetically (array)
+      {
+        products = array.sort();
+        displayArray (products, 'arrayList');
+      }
+
+      function countItemsInArray (array)
+      {
+        alert('Number of items: ' + array.length);
+      }
+
+      products = ["Printer","Tablet","Router","Axe","Mango"];
+
+      displayArray(products, 'arrayList');
+    </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="../../bootstrap/js/bootstrap.min.js"></script>
+  </body>
+
+</html>
