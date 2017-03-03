@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>James' Computer Science Hub</title>
+    <link href="../../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../css/homepage.css" rel="stylesheet">
+    <link href="../../css/style.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="page-header">
+          <h1>JavaScript Traffic Lights <small><span class="glyphicon glyphicon-question-sign"></span> Question 3</span></small></h1>
+      </div>
+      <h2 class="text-center"><b>Traffic Lights</b></h2>
+      <div class="row text-center">
+        <img src="../../images/JavaScript/3/grey-circle.png" id="light-1" height="7%" width="7%" />
+      </div>
+      <div class="row text-center" style="margin-top: 10px">
+        <img src="../../images/JavaScript/3/grey-circle.png" id="light-2" height="7%" width="7%" />
+      </div>
+      <div class="row text-center" style="margin-top: 10px">
+        <img src="../../images/JavaScript/3/red-circle.png" id="light-3" height="7%" width="7%" />
+      </div>
+      <div class="row text-center" style="margin-top: 20px">
+        <button type="button" class="btn btn-primary btn-lg" onclick="runSequence()" id="playSequence">
+          <span class="glyphicon glyphicon-play"></span>&nbsp; Play Light Sequence
+        </button>
+        <br>
+        <button type="button" class="btn btn-warning btn-lg" onclick="runAutomatically()" style="margin-top: 20px" id="runAutomatically">
+          <span class="glyphicon glyphicon-transfer"></span>&nbsp; Run Automatically
+        </button>
+        <button type="button" class="btn btn-danger btn-lg" onclick="stopRunningAutomatically()" style="margin-top: 20px; display: none" id="stopRunning">
+          <span class="glyphicon glyphicon-stop"></span>&nbsp; Stop Running Automatically
+        </button>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="container text-center">
+        <p class="text-muted" style="margin-top: 20px">Site written & designed by James Latham for UTC@MediaCityUK Computer Science Work</p>
+      </div>
+    </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="../../bootstrap/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript">
+      $('#stopRunning').hide();
+      light1 = document.getElementById('light-1');
+      light2 = document.getElementById('light-2');
+      light3 = document.getElementById('light-3');
+      src_prefix = "../../images/JavaScript/3/";
+      stopRunning = false;
+
+      function switchLight (light)
+      {
+        switch (light.id)
+        {
+          case 'light-1':
+            if (light.src.includes('grey-circle.png')) {
+              light.src = src_prefix + 'green-circle.png';
+            } else {
+              light.src = src_prefix + 'grey-circle.png';
+            }
+            break;
+          case 'light-2':
+            if (light.src.includes('grey-circle.png')) {
+              light.src = src_prefix + 'amber-circle.png';
+            } else {
+              light.src = src_prefix + 'grey-circle.png';
+            }
+            break;
+          case 'light-3':
+            if (light.src.includes('grey-circle.png')) {
+              light.src = src_prefix + 'red-circle.png';
+            } else {
+              light.src = src_prefix + 'grey-circle.png';
+            }
+            break;
+          default:
+            alert ('Invalid Light');
+        }
+      }
+
+      function runSequence ()
+      {
+        $('#playSequence').prop('disabled', true);
+        $('#runAutomatically').prop('disabled', true);
+        oldButtonText = $('#playSequence').html();
+        $('#playSequence').html('Playing...');
+        switchLight(light3);
+        switchLight(light2);
+        setTimeout(function() {
+          switchLight(light2);
+          switchLight(light1);
+        }, 2000);
+        setTimeout(function() {
+          switchLight(light1);
+          switchLight(light3);
+          $('#playSequence').prop('disabled', false);
+          $('#runAutomatically').prop('disabled', false);
+          $('#playSequence').html(oldButtonText);
+        }, 3200);
+      }
+
+      function stopRunningAutomatically ()
+      {
+        stopRunning = true;
+        oldStopRunningtext = $('#stopRunning').html();
+        $('#stopRunning').html('<span class="glyphicon glyphicon-time"></span>&nbsp; Waiting for sequence to end...');
+      }
+
+      function runAutomatically ()
+      {
+        $('#runAutomatically').hide();
+        $('#stopRunning').show();
+        if (stopRunning == false) {
+          runSequence();
+          setTimeout(runAutomatically, 3800);
+        } else {
+          $('#runAutomatically').show();
+          $('#stopRunning').hide();
+          $('#stopRunning').html(oldStopRunningtext);
+        }
+      }
+    </script>
+
+  </body>
+
+</html>
