@@ -24,14 +24,212 @@
           <h1>JavaScript Arrays <small>My documentation for question 2 of the controlled assesemnt</small></h1>
       </div>
       <h3>(i) <small>- Set up an array to include the example items plus a few extras of your choice.</small></h3>
+      <br>
+      <h4><i>Plan</i></h4>
+      <hr>
       <p>
+        First I need to analyse what I've been asked to do. I need to set up an array, great, I know how to do that, I'll also display the array on the page.
+        <br>
+        So now I'll write up a step-by-step list I need to complete:
+        <ol>
+          <li>Initiate array.</li>
+          <li>Write function that will populate a list on the page with the contents of the array</li>
+        </ol>
+        <br>
+        <h4><i>Implementation</i></h4>
+        <hr>
         For this project, I had to start by setting up an array with items, including the example items.
         <br>
         <br>
         <img src="../../../images/Documentation/JavaScript/2/array-setup.png" alt="Setting up array" class="img-rounded" height="50%" width="50%" />
+        <br>
+        <br>
+        To declare an array in JavaScript you use the format <code>var cars = ["Saab", "Volvo", "BMW"];</code>, I didn't use <code>var</code> because I needed my array in the global
+        scope, this is so that I can use and manipulate the array from within functions in my script.
+        <br>
+        Now that I have the array initiated. I need to display it. I started by creating an empty <code>&lt;ul&gt;</code> element on the page.
+        I give this element an id of <code>arrayList</code> so I can find & manipulate it in my script later.
+        <br>
+        <br>
+        <img src="../../../images/Documentation/JavaScript/2/empty-ul.png" alt="Setting up ul" class="img-rounded" height="20%" width="20%" />
+        <br>
+        <br>
+        I'm going to use this <code>&lt;ul&gt;</code> to display the array. To display the array I need to add some list items (<code>&lt;li&gt;</code>) to the <code>&lt;ul&gt;</code>.
+        Because I'm going to need to update this <code>&lt;ul&gt;</code> multiple times during the program, I'm going to create a function that will help me do that.
+        I'll start by declaring a new function called <code>displayArray</code>.
+        <br>
+        <br>
+        <img src="../../../images/Documentation/JavaScript/2/declare-displayarray-function.png" alt="Setting up function" class="img-rounded" height="20%" width="20%" />
+        <br>
+        <br>
+        I've given the function 2 parameters. These are <kbd>array</kbd> & <kbd>list</kbd>, this will allow me to pass in the array we're using and also an ID we'll use to identify
+        our <code>&lt;ul&gt;</code>
+        <br>
+        Now I need to write the code for populating the <code>&lt;ul&gt;</code> with the contents of our array.
+        <br>
+        <br>
+        <img src="../../../images/Documentation/JavaScript/2/display-array.png" alt="Setting up function" class="img-rounded" height="25%" width="25%" />
+        <br>
+        <br>
+        This code is quite simple. This is an overview of what it does:
+        <ul>
+          <li>Initiate an object from the list (<code>&lt;ul&gt;</code> / <code>&lt;ol&gt;</code>) element on the page with an ID equal to the <kbd>list</kbd> parameter.</li>
+          <li>Loop over and empty the list. Removing any list items (<code>&lt;li&gt;</code>)</li>
+          <li>Loop over the array passed in with parameter <kbd>array</kbd>:</li>
+          <li>
+            <ol>
+              <li>Create a variable called <kbd>item</kbd> and set it to the item in the array where the index of the item is equal to <kbd>i</kbd></li>
+              <li>Initiate a new <code>&lt;li&gt;</code> element object called <kbd>li</kbd></li>
+              <li>Set the <code>innerHTML</code> of this object to the index followed by the item</li>
+              <li>Append this list item to the list</li>
+            </ol>
+          </li>
+        </ul>
+        <br>
+        Then I call the function with the <code>products</code> array and the ID of my <code>&lt;ul&gt;</code> on the page so that it will populate that list.
+        <br>
+        <br>
+        <img src="../../../images/Documentation/JavaScript/2/call-displayarray.png" alt="Setting up function" class="img-rounded" height="25%" width="25%" />
+        <br>
+        <br>
+        <h4><i>Testing</i></h4>
+        <hr>
+        To test my script I'll open the JavaScript console on my web browser and make sure there's no errors and that it's working.
+        <br>
+        <br>
+        <img src="../../../images/Documentation/JavaScript/2/display-test.png" alt="Setting up function" class="img-rounded" height="45%" width="45%" />
+        <br>
+        <br>
+        I can see that there's 3 warnings, however, these aren't critical errors or anything that affects my script so I don't need to look further into that.
+        <br>
+        <br>
+        <h4><i>Demonstration</i></h4>
+        <hr>
+        Let's see how it turned out.
+        <br>
+        <br>
+        <img src="../../../images/Documentation/JavaScript/2/display-array-ss.png" alt="Setting up function" class="img-rounded" height="35%" width="35%" />
+        <br>
+        <br>
+        <b>Brilliant!</b> Now we have a visualisation of our array on the page.
+        <br>
+        <br>
       </p>
-
+      <h3>(ii) <small>- Write script that orders the array in alphabetical order.</small></h3>
       <br>
+      <h4><i>Plan</i></h4>
+      <hr>
+      <p>
+        So, I need to order an array alphabetically. Off of the top of my head, I don't know what the function for doing this is, so I'll start with researching
+        what function I need to use to achieve this.
+        <br>
+        <br>
+        <img src="../../../images/Documentation/JavaScript/2/google-sort.png" alt="Setting up function" class="img-rounded" height="35%" width="35%" />
+        <br>
+        <br>
+        Just by reading the preview of the top link, I can see that the JavaScript <code>sort()</code> method does what I'm looking for.
+        So now I just need to let the user press a button that will trigger these steps:
+        <ol>
+          <li>Run <code>sort()</code> method on the array to sort it alphabetically</li>
+          <li>Call <code>displayArray()</code> function again to update the list on the page.</li>
+        </ol>
+        <br>
+        <h4><i>Implementation</i></h4>
+        <hr>
+        I start by declaring a function called <code>orderArrayAlphabetically</code>.
+        <br>
+        <br>
+        <img src="../../../images/Documentation/JavaScript/2/orderarrayalphabetically.png" alt="Setting up function" class="img-rounded" height="35%" width="35%" />
+        <br>
+        <br>
+        This function takes one paramater, <kbd>array</kbd>, this is the array to sort.
+        <br>
+        Next I write the code to sort the array and display it.
+        <br>
+        <br>
+        <img src="../../../images/Documentation/JavaScript/2/orderarrayalphabetically-2.png" alt="Setting up function" class="img-rounded" height="35%" width="35%" />
+        <br>
+        <br>
+        I start by creating a new variable called <code>sortedArray</code> and setting it to <code>array.sort()</code>, this is the alphabetically sorted version of the passed in array.
+        Then I call the <code>displayArray()</code> function again but I pass in the new <code>sortedArray</code> variable.
+        <br>
+        <br>
+        Next I need to make the button on the page that will trigger this new <code>orderArrayAlphabetically()</code> function.
+        <br>
+        <br>
+        <img src="../../../images/Documentation/JavaScript/2/button-markup.png" alt="Setting up function" class="img-rounded" height="55%" width="55%" />
+        <br>
+        <br>
+        This <code>&lt;button&gt;</code> element has an <code>onclick</code> attribute that runs the <code>orderArrayAlphabetically()</code> function and passes in the <kbd>products</kbd> array.
+        <br>
+        This should now sort and update the array on the page when the user presses it.
+        <br>
+        <br>
+        <h4><i>Testing</i></h4>
+        <hr>
+        For testing, I'm going to use the JavaScript console again.
+        <br>
+        <br>
+        <img src="../../../images/Documentation/JavaScript/2/display-test.png" alt="Setting up function" class="img-rounded" height="45%" width="45%" />
+        <br>
+        <br>
+        Again, no problems to worry about.
+        <br>
+        <br>
+        <h4><i>Demonstration</i></h4>
+        <hr>
+        Let's see it in action.
+        <br>
+        <br>
+        <img src="../../../images/Documentation/JavaScript/2/order.gif" alt="Setting up function" class="img-rounded" height="45%" width="45%" />
+      </p>
+      <h3>(iii) <small>- Write script that counts the number of items in the array.</small></h3>
+      <br>
+      <h4><i>Plan</i></h4>
+      <hr>
+      <p>
+        Having to write a loop before, I already know how to get the number of items in an array using JavaScript. All arrays have their own property called <kbd>length</kbd>.
+        If i want to get the number of items in an array, I can simply call <code>array.length</code>.
+        <br>
+        Now I'm going to follow these steps to implement it:
+        <ol>
+          <li>Create function to display the number of items in an array</li>
+          <li>Create button to trigger this function</li>
+        </ol>
+        <br>
+        <h4><i>Implementation</i></h4>
+        <hr>
+        I'll start by declaring a function called <code>countItemsInArray()</code> that will count the items in the array.
+        <br>
+        <br>
+        <img src="../../../images/Documentation/JavaScript/2/countitemsinarray.png" alt="Setting up function" class="img-rounded" height="30%" width="30%" />
+        <br>
+        <br>
+        This array takes one parameter, <kbd>array</kbd>, this is the array that should be counted.
+        <br>
+        Next I'll write a simple one-liner to display the number of items using the <code>length</code> attribute and JavaScript's <code>alert()</code> function.
+        <br>
+        <br>
+        <img src="../../../images/Documentation/JavaScript/2/countitemsinarray-2.png" alt="Setting up function" class="img-rounded" height="30%" width="30%" />
+        <br>
+        <br>
+        <h4><i>Testing</i></h4>
+        <hr>
+        Again, I'll use the JavaScript console to test my script for any errors.
+        <br>
+        <br>
+        <img src="../../../images/Documentation/JavaScript/2/display-test.png" alt="Setting up function" class="img-rounded" height="45%" width="45%" />
+        <br>
+        <br>
+        No errors again, great!
+        <br>
+        <h4><i>Demonstration</i></h4>
+        <hr>
+        Let's see it working!
+        <br>
+        <br>
+        <img src="../../../images/Documentation/JavaScript/2/count.gif" alt="Setting up function" class="img-rounded" height="45%" width="45%" />
+      </p>
       <h5><b><i>Written by James Latham</i></b></h5>
       <br>
     </div>

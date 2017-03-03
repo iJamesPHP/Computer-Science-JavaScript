@@ -16,7 +16,9 @@
           <h1>JavaScript Arrays <small><span class="glyphicon glyphicon-question-sign"></span> Question 1</span></small></h1>
       </div>
       <h2>Array <code>products</code> currently looks like:</h2>
+
       <ul id="arrayList"></ul>
+
       <br>
       <button type="button" onclick="orderArrayAlphabetically(products)" class="btn btn-primary btn-md">
         Order <code>products</code> alphabetically
@@ -33,6 +35,7 @@
     </footer>
 
     <script type="text/javascript">
+
       function displayArray (array, list)
       {
         var list = document.getElementById(list);
@@ -49,8 +52,8 @@
 
       function orderArrayAlphabetically (array)
       {
-        products = array.sort();
-        displayArray (products, 'arrayList');
+        sortedArray = array.sort();
+        displayArray (sortedArray, 'arrayList');
       }
 
       function countItemsInArray (array)
@@ -61,6 +64,7 @@
       products = ["Printer","Tablet","Router","Axe","Mango"];
 
       displayArray(products, 'arrayList');
+
     </script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
