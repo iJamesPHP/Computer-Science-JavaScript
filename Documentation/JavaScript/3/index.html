@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>James' Computer Science Hub</title>
+    <link href="../../../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../../css/documentation.css" rel="stylesheet">
+    <link href="../../../css/style.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <div class="jumbotron">
+      <div class="container">
+        <h1>James' Computer Science Hub</h1>
+        <h2>Documentation</h2>
+        <p>Read my documentation below.</p>
+        <a href="../../../index.html" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-home"></span>&nbsp; Home</a>
+      </div>
+    </div>
+    <div class="container">
+      <div class="page-header">
+          <h1>JavaScript DOM Interaction <small>My documentation for question 1 of the controlled assesemnt</small></h1>
+      </div>
+      <h3>(i) <small>- Explain how you ran the script.</small></h3>
+      <p>
+        For this question I was given some example code that I needed to work out how to execute and explain how it works.
+        <br>
+        Here's the code I was given:
+<pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Change an HTML element&lt;/h1&gt;
+    &lt;p id="msg"&gt;Now you see me.&lt;/p&gt;
+    &lt;button type="button"
+      onclick="document.getElementById('msg').innerHTML = 'Gone!'"&gt;
+      Click Me!
+    &lt;/button&gt;
+    &lt;button type="button"
+      onclick="document.getElementById('msg').innerHTML = 'Back again!'"&gt;
+      Bring me back!
+    &lt;/button&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+        I saw that it was HTML with a small amount of JavaScript being used in the <code>onclick</code> attributes of the buttons.
+        I started by making an <code>index.html</code> file.
+        <br>
+        <img src="../../../images/Documentation/JavaScript/1/making-index.png" alt="Creating index.html file" class="img-rounded" />
+        <br>
+        <br>
+        Then I pasted the code into the file.
+        <br>
+        <br>
+        <img src="../../../images/Documentation/JavaScript/1/pasting-code.png" alt="Pasting code into file" class="img-rounded" width="30%" height="30%" />
+        <br>
+        <br>
+        Now that I have the index.html file with the code in it, I can open up my web browser (Safari in this case) and visit the file location to see
+        the executed code.
+        <br>
+        <br>
+        <img src="../../../images/Documentation/JavaScript/1/viewing-page.png" alt="Viewing page" class="img-rounded" width="60%" height="60%" />
+        <br>
+        <br>
+        Brilliant, the code has been executed, now let's see what it does by pressing the buttons on the page.
+        <br>
+        <br>
+        <img src="../../../images/Documentation/JavaScript/1/interacting.gif" alt="Interacting with page" class="img-rounded" width="60%" height="60%" />
+      </p>
+      <br>
+      <h3>(ii) <small>- Explain how the script works.</small></h3>
+      <p>
+        These buttons are able to modify the elements on the page by using JavaScript. Let's have a look at each individual line of this script.
+        <div class="row">
+          <div class="col-lg-2">
+            <code>&lt;!DOCTYPE html&gt;</code>
+          </div>
+          <div class="col-lg-10">
+            <p class="vcenter">
+              This sets the document type. This is not required but is good practice to use as some very old browsers still use it to differentiate
+              document types.
+            </p>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-lg-2">
+            <code>&lt;html&gt;</code>
+          </div>
+          <div class="col-lg-10">
+            <p>
+              This is the opening HTML tag. The main contents for the document goes in here.
+            </p>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-lg-2">
+            <code>&lt;body&gt;</code>
+          </div>
+          <div class="col-lg-10">
+            <p>
+              This is the opening body tag. The main visible contents for the document goes in here.
+            </p>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-lg-2">
+            <code>&lt;h1&gt;Change an HTML element&lt;/h1&gt;</code>
+          </div>
+          <div class="col-lg-10">
+            <p>
+              This is a H1 element, it is the largest pre-defined heading style in HTML. This is used to display the title of the page.
+            </p>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-lg-2">
+            <code>&lt;p id="msg"&gt;Now you see me.&lt;/p&gt;</code>
+          </div>
+          <div class="col-lg-10">
+            <p>
+              This is a P element, it is used for text and general writing on a web page. This P element has been given an <code>id</code> attribute
+              so that it can be referenced by the JavaScript. In this case it will be referenced using <code>msg</code>.
+            </p>
+          </div>
+        </div>
+        <br>
+        <div class="row lone-code">
+          <code>&lt;button type="button" onclick="document.getElementById('msg').innerHTML = 'Gone!'"&gt; Click Me! &lt;/button&gt;</code>
+        </div>
+        <br>
+        <div class="row lone-code">
+          <p>
+            This is a button element, it automatically styles the contained text inside a button, in this case, the text is <code>Click Me!</code>.
+            This button element has been given an <code>onclick</code> attribute. When the button is clicked, the script within this attribute is run,
+            when this button is clicked, JavaScript finds the element with an ID of <code>msg</code> within the DOM then changes it's text to <code>Gone!</code>.
+          </p>
+        </div>
+        <br>
+        <div class="row lone-code">
+          <code>&lt;button type="button" onclick="document.getElementById('msg').innerHTML = 'Back again!'"&gt; Bring me back! &lt;/button&gt;</code>
+        </div>
+        <br>
+        <div class="row lone-code">
+          <p>
+            This is another button element, it automatically styles the contained text inside a button, in this case, the text is <code>Bring me back!</code>.
+            This button element has been given an <code>onclick</code> attribute. When the button is clicked, the script within this attribute is run,
+            when this button is clicked, JavaScript finds the element with an ID of <code>msg</code> within the DOM then changes it's text to <code>Back again!</code>.
+          </p>
+        </div>
+        <br>
+        Then all the unclosed tags, in this case <code>&lt;html&gt;</code> and <code>&lt;body&gt;</code>.
+      </p>
+      <br>
+      <h5><b><i>Written by James Latham</i></b></h5>
+      <br>
+    </div>
+
+    <footer class="footer">
+      <div class="container text-center">
+        <p class="text-muted" style="margin-top: 20px">Site written & designed by James Latham for UTC@MediaCityUK Computer Science Work</p>
+      </div>
+    </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="../../../bootstrap/js/bootstrap.min.js"></script>
+  </body>
+
+</html>

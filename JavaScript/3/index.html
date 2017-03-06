@@ -17,13 +17,13 @@
       </div>
       <h2 class="text-center"><b>Traffic Lights</b></h2>
       <div class="row text-center">
-        <img src="../../images/JavaScript/3/grey-circle.png" id="light-1" height="7%" width="7%" />
+        <img src="../../images/JavaScript/3/red-circle.png" id="red-light" height="7%" width="7%" />
       </div>
       <div class="row text-center" style="margin-top: 10px">
-        <img src="../../images/JavaScript/3/grey-circle.png" id="light-2" height="7%" width="7%" />
+        <img src="../../images/JavaScript/3/grey-circle.png" id="amber-light" height="7%" width="7%" />
       </div>
       <div class="row text-center" style="margin-top: 10px">
-        <img src="../../images/JavaScript/3/red-circle.png" id="light-3" height="7%" width="7%" />
+        <img src="../../images/JavaScript/3/grey-circle.png" id="green-light" height="7%" width="7%" />
       </div>
       <div class="row text-center" style="margin-top: 20px">
         <button type="button" class="btn btn-primary btn-lg" onclick="runSequence()" id="playSequence">
@@ -50,19 +50,63 @@
 
     <script type="text/javascript">
       $('#stopRunning').hide();
-      light1 = document.getElementById('light-1');
-      light2 = document.getElementById('light-2');
-      light3 = document.getElementById('light-3');
+      redLight = document.getElementById('red-light');
+      amberLight = document.getElementById('amber-light');
+      greenLight = document.getElementById('green-light');
       src_prefix = "../../images/JavaScript/3/";
-      stopRunning = false;
+      autoRun = false;
 
+      // Define traffic light sequence
+      var lightSequence = [
+        {red: true, amber: false, green: false},
+        {red: true, amber: true, green: false},
+        {red: false, amber: false, green: true},
+        {red: false, amber: true, green: false}
+      ];
+      var sequenceIndex = 0;
+
+      function setLight(light,state) {
+        if (!state) {
+            // switch light OFF
+            light.src = src_prefix + 'grey-circle.png';
+            return;
+        }
+        // switch light on
+        switch (light.id) {
+          case 'red-light' :
+            light.src = src_prefix + 'red-circle.png';
+            break;
+          case 'amber-light' :
+            light.src = src_prefix + 'amber-circle.png';
+            break;
+          case 'green-light' :
+            light.src = src_prefix + 'green-circle.png';
+            break;
+          default:
+            alert ('Invalid Light');
+            break;
+        }
+      }
+
+      function setLightSequence(index) {
+        // Check array in bounds
+        if (index < lightSequence.length) {
+          setLight(redLight,lightSequence[index].red);
+          setLight(amberLight,lightSequence[index].amber);
+          setLight(greenLight,lightSequence[index].green);
+        }
+      }
+
+
+
+/*
       function switchLight (light)
       {
         switch (light.id)
         {
           case 'light-1':
             if (light.src.includes('grey-circle.png')) {
-              light.src = src_prefix + 'green-circle.png';
+              light.src = src_prefix + 'red-circle.png';
             } else {
               light.src = src_prefix + 'grey-circle.png';
             }
@@ -76,7 +120,7 @@
             break;
           case 'light-3':
             if (light.src.includes('grey-circle.png')) {
-              light.src = src_prefix + 'red-circle.png';
+              light.src = src_prefix + 'green-circle.png';
             } else {
               light.src = src_prefix + 'grey-circle.png';
             }
@@ -85,6 +129,27 @@
             alert ('Invalid Light');
         }
       }
+      */
+
+      function lightsLoop(timeout) {
+        setTimeout(function () {
+            setLightSequence(sequenceIndex);
+            if (++sequenceIndex <= lightSequence.length) {
+               lightsLoop(3000);  // loop again
+            }
+            else {
+              // End sequence
+              sequenceIndex = 0;
+              setLightSequence(sequenceIndex);
+
+              // If set to auto then run sequence again
+              if (autoRun) {
+                sequenceIndex++;
+                lightsLoop(3000);  // loop again
+              }
+            }
+         }, timeout)
+      }
 
       function runSequence ()
       {
@@ -92,40 +157,55 @@
         $('#runAutomatically').prop('disabled', true);
         oldButtonText = $('#playSequence').html();
         $('#playSequence').html('Playing...');
-        switchLight(light3);
-        switchLight(light2);
-        setTimeout(function() {
-          switchLight(light2);
-          switchLight(light1);
-        }, 2000);
-        setTimeout(function() {
-          switchLight(light1);
-          switchLight(light3);
-          $('#playSequence').prop('disabled', false);
-          $('#runAutomatically').prop('disabled', false);
-          $('#playSequence').html(oldButtonText);
-        }, 3200);
+
+        // Loop over sequence
+        lightsLoop(0);
+
+        $('#playSequence').prop('disabled', false);
+        $('#runAutomatically').prop('disabled', false);
+        $('#playSequence').html(oldButtonText);
+
       }
 
+/*
+setTimeout(function() {
+  switchLight(light2);
+}, 500);
+setTimeout(function() {
+  switchLight(light1);
+  switchLight(light2);
+  switchLight(light3);
+}, 2000);
+setTimeout(function() {
+  switchLight(light1);
+  switchLight(light3);
+  $('#playSequence').prop('disabled', false);
+  $('#runAutomatically').prop('disabled', false);
+  $('#playSequence').html(oldButtonText);
+}, 2600);
+
+*/
       function stopRunningAutomatically ()
       {
-        stopRunning = true;
+        autoRun = false;
         oldStopRunningtext = $('#stopRunning').html();
         $('#stopRunning').html('<span class="glyphicon glyphicon-time"></span>&nbsp; Waiting for sequence to end...');
+
+        $('#runAutomatically').show();
+        $('#stopRunning').hide();
+        $('#stopRunning').html(oldStopRunningtext);
+
+
       }
 
       function runAutomatically ()
       {
+        autoRun = true;
         $('#runAutomatically').hide();
         $('#stopRunning').show();
-        if (stopRunning == false) {
-          runSequence();
-          setTimeout(runAutomatically, 3800);
-        } else {
-          $('#runAutomatically').show();
-          $('#stopRunning').hide();
-          $('#stopRunning').html(oldStopRunningtext);
-        }
+        runSequence();
+
+
       }
     </script>
 
