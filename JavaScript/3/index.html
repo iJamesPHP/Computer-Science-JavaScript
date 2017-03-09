@@ -56,7 +56,6 @@
       src_prefix = "../../images/JavaScript/3/";
       autoRun = false;
 
-      // Define traffic light sequence
       var lightSequence = [
         {red: true, amber: false, green: false},
         {red: true, amber: true, green: false},
@@ -67,11 +66,9 @@
 
       function setLight(light,state) {
         if (!state) {
-            // switch light OFF
             light.src = src_prefix + 'grey-circle.png';
             return;
         }
-        // switch light on
         switch (light.id) {
           case 'red-light' :
             light.src = src_prefix + 'red-circle.png';
@@ -89,7 +86,6 @@
       }
 
       function setLightSequence(index) {
-        // Check array in bounds
         if (index < lightSequence.length) {
           setLight(redLight,lightSequence[index].red);
           setLight(amberLight,lightSequence[index].amber);
@@ -97,52 +93,15 @@
         }
       }
 
-
-
-/*
-      function switchLight (light)
-      {
-        switch (light.id)
-        {
-          case 'light-1':
-            if (light.src.includes('grey-circle.png')) {
-              light.src = src_prefix + 'red-circle.png';
-            } else {
-              light.src = src_prefix + 'grey-circle.png';
-            }
-            break;
-          case 'light-2':
-            if (light.src.includes('grey-circle.png')) {
-              light.src = src_prefix + 'amber-circle.png';
-            } else {
-              light.src = src_prefix + 'grey-circle.png';
-            }
-            break;
-          case 'light-3':
-            if (light.src.includes('grey-circle.png')) {
-              light.src = src_prefix + 'green-circle.png';
-            } else {
-              light.src = src_prefix + 'grey-circle.png';
-            }
-            break;
-          default:
-            alert ('Invalid Light');
-        }
-      }
-      */
-
       function lightsLoop(timeout) {
         setTimeout(function () {
             setLightSequence(sequenceIndex);
             if (++sequenceIndex <= lightSequence.length) {
-               lightsLoop(3000);  // loop again
+               lightsLoop(3000);
             }
             else {
-              // End sequence
               sequenceIndex = 0;
               setLightSequence(sequenceIndex);
-
-              // If set to auto then run sequence again
               if (autoRun) {
                 sequenceIndex++;
                 lightsLoop(3000);  // loop again
@@ -157,45 +116,21 @@
         $('#runAutomatically').prop('disabled', true);
         oldButtonText = $('#playSequence').html();
         $('#playSequence').html('Playing...');
-
-        // Loop over sequence
         lightsLoop(0);
-
         $('#playSequence').prop('disabled', false);
         $('#runAutomatically').prop('disabled', false);
         $('#playSequence').html(oldButtonText);
 
       }
 
-/*
-setTimeout(function() {
-  switchLight(light2);
-}, 500);
-setTimeout(function() {
-  switchLight(light1);
-  switchLight(light2);
-  switchLight(light3);
-}, 2000);
-setTimeout(function() {
-  switchLight(light1);
-  switchLight(light3);
-  $('#playSequence').prop('disabled', false);
-  $('#runAutomatically').prop('disabled', false);
-  $('#playSequence').html(oldButtonText);
-}, 2600);
-
-*/
       function stopRunningAutomatically ()
       {
         autoRun = false;
         oldStopRunningtext = $('#stopRunning').html();
         $('#stopRunning').html('<span class="glyphicon glyphicon-time"></span>&nbsp; Waiting for sequence to end...');
-
         $('#runAutomatically').show();
         $('#stopRunning').hide();
         $('#stopRunning').html(oldStopRunningtext);
-
-
       }
 
       function runAutomatically ()
@@ -204,8 +139,6 @@ setTimeout(function() {
         $('#runAutomatically').hide();
         $('#stopRunning').show();
         runSequence();
-
-
       }
     </script>
 

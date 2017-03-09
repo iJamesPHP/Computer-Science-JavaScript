@@ -21,140 +21,68 @@
     </div>
     <div class="container">
       <div class="page-header">
-          <h1>JavaScript DOM Interaction <small>My documentation for question 1 of the controlled assesemnt</small></h1>
+          <h1>JavaScript Traffic Lights <small>My documentation for question 3 of the controlled assesemnt</small></h1>
       </div>
-      <h3>(i) <small>- Explain how you ran the script.</small></h3>
+      <h3>(i) <small>- Make a list of required assets.</small></h3>
       <p>
-        For this question I was given some example code that I needed to work out how to execute and explain how it works.
+        For this question I was asked to crete an animated set of "<i>Traffic Lights</i>" using JavaScript.
         <br>
-        Here's the code I was given:
-<pre>
-&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-  &lt;body&gt;
-    &lt;h1&gt;Change an HTML element&lt;/h1&gt;
-    &lt;p id="msg"&gt;Now you see me.&lt;/p&gt;
-    &lt;button type="button"
-      onclick="document.getElementById('msg').innerHTML = 'Gone!'"&gt;
-      Click Me!
-    &lt;/button&gt;
-    &lt;button type="button"
-      onclick="document.getElementById('msg').innerHTML = 'Back again!'"&gt;
-      Bring me back!
-    &lt;/button&gt;
-  &lt;/body&gt;
-&lt;/html&gt;
-</pre>
-        I saw that it was HTML with a small amount of JavaScript being used in the <code>onclick</code> attributes of the buttons.
-        I started by making an <code>index.html</code> file.
+        From the get-go I knew how to do this. I would need some simple coloured circle images then I could easily change these images on the page.
         <br>
-        <img src="../../../images/Documentation/JavaScript/1/making-index.png" alt="Creating index.html file" class="img-rounded" />
+        I would need:
+        <ul>
+          <li>A red circle image.</li>
+          <li>An amber circle image.</li>
+          <li>A green circle image.</li>
+        </ul>
+        <br>
+        I started by booting up PhotoShop and producing some basic assets.
         <br>
         <br>
-        Then I pasted the code into the file.
+        <img src="../../../images/Documentation/JavaScript/3/asset-red-circle-photoshop.png" alt="Setting up ul" class="img-rounded" height="25%" width="25%" />
+        <img src="../../../images/Documentation/JavaScript/3/asset-amber-circle-photoshop.png" alt="Setting up ul" class="img-rounded" height="25%" width="25%" />
+        <img src="../../../images/Documentation/JavaScript/3/asset-green-circle-photoshop.png" alt="Setting up ul" class="img-rounded" height="25%" width="25%" />
         <br>
         <br>
-        <img src="../../../images/Documentation/JavaScript/1/pasting-code.png" alt="Pasting code into file" class="img-rounded" width="30%" height="30%" />
+        <h3>(ii) <small>- Describe where the assets would be best located.</small></h3>
+        <br>
+        With all web-based programming, it's important to stay organised. I like to keep images and other assets sorted in a neat directory structure.
+        <br>
+        For these images, I've saved them in:
         <br>
         <br>
-        Now that I have the index.html file with the code in it, I can open up my web browser (Safari in this case) and visit the file location to see
-        the executed code.
+        <kbd>Site > images > projects > traffic_lights > red-circle.png</kbd>
+        <br>
+        <kbd>Site > images > projects > traffic_lights > amber-circle.png</kbd>
+        <br>
+        <kbd>Site > images > projects > traffic_lights > greem-circle.png</kbd>
         <br>
         <br>
-        <img src="../../../images/Documentation/JavaScript/1/viewing-page.png" alt="Viewing page" class="img-rounded" width="60%" height="60%" />
+        This sort of file structuring is very useful. It allows you to manage your assets with ease and also helps the client's browser slightly with caching.
         <br>
         <br>
-        Brilliant, the code has been executed, now let's see what it does by pressing the buttons on the page.
+        <h3>(iii) <small>- Describe the structure of an array that could be used to handle the traffic light sequence.</small></h3>
         <br>
+        Here's my array to control the lighting sequence.
         <br>
-        <img src="../../../images/Documentation/JavaScript/1/interacting.gif" alt="Interacting with page" class="img-rounded" width="60%" height="60%" />
-      </p>
+<pre>var lightSequence = [
+  {red: true, amber: false, green: false},
+  {red: true, amber: true, green: false},
+  {red: false, amber: false, green: true},
+  {red: false, amber: true, green: false}
+];</pre>
       <br>
-      <h3>(ii) <small>- Explain how the script works.</small></h3>
-      <p>
-        These buttons are able to modify the elements on the page by using JavaScript. Let's have a look at each individual line of this script.
-        <div class="row">
-          <div class="col-lg-2">
-            <code>&lt;!DOCTYPE html&gt;</code>
-          </div>
-          <div class="col-lg-10">
-            <p class="vcenter">
-              This sets the document type. This is not required but is good practice to use as some very old browsers still use it to differentiate
-              document types.
-            </p>
-          </div>
-        </div>
-        <br>
-        <div class="row">
-          <div class="col-lg-2">
-            <code>&lt;html&gt;</code>
-          </div>
-          <div class="col-lg-10">
-            <p>
-              This is the opening HTML tag. The main contents for the document goes in here.
-            </p>
-          </div>
-        </div>
-        <br>
-        <div class="row">
-          <div class="col-lg-2">
-            <code>&lt;body&gt;</code>
-          </div>
-          <div class="col-lg-10">
-            <p>
-              This is the opening body tag. The main visible contents for the document goes in here.
-            </p>
-          </div>
-        </div>
-        <br>
-        <div class="row">
-          <div class="col-lg-2">
-            <code>&lt;h1&gt;Change an HTML element&lt;/h1&gt;</code>
-          </div>
-          <div class="col-lg-10">
-            <p>
-              This is a H1 element, it is the largest pre-defined heading style in HTML. This is used to display the title of the page.
-            </p>
-          </div>
-        </div>
-        <br>
-        <div class="row">
-          <div class="col-lg-2">
-            <code>&lt;p id="msg"&gt;Now you see me.&lt;/p&gt;</code>
-          </div>
-          <div class="col-lg-10">
-            <p>
-              This is a P element, it is used for text and general writing on a web page. This P element has been given an <code>id</code> attribute
-              so that it can be referenced by the JavaScript. In this case it will be referenced using <code>msg</code>.
-            </p>
-          </div>
-        </div>
-        <br>
-        <div class="row lone-code">
-          <code>&lt;button type="button" onclick="document.getElementById('msg').innerHTML = 'Gone!'"&gt; Click Me! &lt;/button&gt;</code>
-        </div>
-        <br>
-        <div class="row lone-code">
-          <p>
-            This is a button element, it automatically styles the contained text inside a button, in this case, the text is <code>Click Me!</code>.
-            This button element has been given an <code>onclick</code> attribute. When the button is clicked, the script within this attribute is run,
-            when this button is clicked, JavaScript finds the element with an ID of <code>msg</code> within the DOM then changes it's text to <code>Gone!</code>.
-          </p>
-        </div>
-        <br>
-        <div class="row lone-code">
-          <code>&lt;button type="button" onclick="document.getElementById('msg').innerHTML = 'Back again!'"&gt; Bring me back! &lt;/button&gt;</code>
-        </div>
-        <br>
-        <div class="row lone-code">
-          <p>
-            This is another button element, it automatically styles the contained text inside a button, in this case, the text is <code>Bring me back!</code>.
-            This button element has been given an <code>onclick</code> attribute. When the button is clicked, the script within this attribute is run,
-            when this button is clicked, JavaScript finds the element with an ID of <code>msg</code> within the DOM then changes it's text to <code>Back again!</code>.
-          </p>
-        </div>
-        <br>
-        Then all the unclosed tags, in this case <code>&lt;html&gt;</code> and <code>&lt;body&gt;</code>.
+      I decided to use an array of objects. Each object contains light states for each light.
+      <br>
+      So, for example, this array means it will be <b>RED / OFF / OFF</b> first, then it will be <b>RED / AMBER / OFF</b>, then it will be <b>OFF / OFF / GREEN</b> <br>
+      then it goes to <b>OFF / AMBER / OFF</b> so that the sequence can go on.
+      <br>
+      When the user presses a button to start the sequence, I will progress through the array and reflect the states onto the lights with delays inbetween.
+      <br>
+      <br>
+      <h3>(iv) <small>- Write a script to produce an animation of a set of traffic lights such that the lights change in the standard sequence each time the button is clicked.</small></h3>
+      <br>
+      <script src="https://gist.github.com/iJamesPHP/ef8ba5d1970a2d5447a07a1010f0a7f7.js"></script>
       </p>
       <br>
       <h5><b><i>Written by James Latham</i></b></h5>
