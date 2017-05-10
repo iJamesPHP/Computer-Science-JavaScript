@@ -82,7 +82,65 @@
       <br>
       <h3>(iv) <small>- Write a script to produce an animation of a set of traffic lights such that the lights change in the standard sequence each time the button is clicked.</small></h3>
       <br>
-      <script src="https://gist.github.com/iJamesPHP/ef8ba5d1970a2d5447a07a1010f0a7f7.js"></script>
+      <script src="https://gist.github.com/iJamesPHP/39feb0a251627d6a77b23dfb98b671ef.js"></script>
+      <br>
+      <br>
+      <h3>4. <small>- Change the animation script so that the sequence of lights is displayed automatically on a timed basis without user input.</small></h3>
+      <br>
+      <script src="https://gist.github.com/iJamesPHP/65e1dfd9cc0823fbea29c6efaa1fcaa2.js"></script>
+      <br><br>
+      <h3>5. <small>- Scripts can be embedded in the HTML of web pages or saved externally as script files. Discuss the benefits and drawbacks of each approach.</small></h3>
+      <br>
+      With large-scale web applications, there's often a vast amount of JavaScript, these scripts are often saved in <code>.js</code> file elsewehere on the host
+      and are then reffered to from the html using a <code>&lt;script&gt;</code> tag.
+      <br><br>
+      Like this:
+      <br><br>
+      <code>&lt;script src="path/to/script.js" /&gt;</code>
+      <br>
+      <br>
+      Alternatively, your scripts can be included inline within your HTML document like so:
+      <br />
+      <br>
+      <code>&lt;script&gt; alert("hi"); &lt;/script&gt;</code>
+      <br>
+      <br>
+      <h4>Pros & Cons of external JavaScript</h4>
+      <hr>
+      <h5>Pros</h5>
+      <ul>
+        <li>Easy organisation</li>
+        <li>Easier to write longer scripts</li>
+        <li>CDN (Content Delivery Network) capability, get files to people in different countries quicker</li>
+        <li>Reference pre-written scripts and frameworks</li>
+      </ul>
+      <br>
+      <h5>Cons</h5>
+      <ul>
+        <li>If a script on a slow server is referenced, page loading times will suffer</li>
+      </ul>
+      <br>
+      <br>
+      <h4>Pros & Cons of inline JavaScript</h4>
+      <hr>
+      <h5>Pros</h5>
+      <ul>
+        <li>Easier to understand</li>
+        <li>Faster loading times for smaller scripts</li>
+      </ul>
+      <br>
+      <h5>Cons</h5>
+      <ul>
+        <li>Hard to write longer scripts</li>
+        <li>If working on a big project, you can't organise your scripts very well</li>
+        <li>Your script always has to be served by the same host as your entire page, this means people in different countries to the host will have slow loading times</li>
+      </ul>
+      <br>
+      <br>
+      Even for small projects, I think external JavaScript is a better option, any cons are easily avoidable and it has great pros.
+      <br><br>
+      As long as your script is on a fast server then there won't be any noticeable loading time sacrifices, this will let you organise better and furthermore write longer scripts
+      with piece of mind.
       </p>
       <br>
       <h5><b><i>Written by James Latham</i></b></h5>
