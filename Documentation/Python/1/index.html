@@ -65,6 +65,17 @@
         For this I'm choosing to cover all the requirements by using a basic IF/ELIF/ELSE structured text-based program. This is because
         a program like this is easy to create so therefore I can focus on functionality and features rather than a needlessly pretty graphical
         based program.
+        <br>
+        <br>
+        <h5><b><i>Success Criteria</i></b></h5>
+        In this section I'll list what I want to achieve with my program so that I can compare my end result to it in my evaluation.
+        <hr>
+        This is my <b>success criteria</b>:
+        <ul>
+          <li>Have atleast 10 possible outcomes of the troubleshooting tree</li>
+          <li>Handle any illegal inputs</li>
+          <li>Always give some sort of solution, if nothing is found then just tell them to take it to the nearest repair shop</li>
+        </ul>
       </p>
       <br>
       <h4><i>Planning</i></h4>
@@ -151,6 +162,8 @@
               pass
           else then
               exit()
+
+          print('Please take your phone to the nearest repair shop!')
         </pre>
       </p>
       <br>
@@ -162,9 +175,9 @@
         https://gist.github.com/iJamesPHP/7772bc475fa93b5e1a3111f759997e9b
       </p>
       <br>
-      <h5><i>Discussion</i></h5>
+      <h5><b><i>Discussion</i></b></h5>
       <p>
-        In this section I'll try to describe the different aspects of my program, how they work and why I've chosen to do it that way.
+        In this section I'll describe the different aspects of my program, how they work and why I've chosen to do it that way.
         <hr />
         Rather than diving straight into the core logic, I start by defining functions that I'll find useful later in my program. I start by
         defining a function called <code>sysp()</code>, I use this function instead of the <code>print()</code> function so that I can always
@@ -174,7 +187,7 @@
         I also wrote a function called <code>sysinp()</code>, this function is to add the same prefix as <code>sysp()</code> to input messages.
         <br>
         <br>
-        I found that in all of my IF statements, I'd end up needing to tell the user that their input input was wrong and exit the program if they
+        I found that in all of my IF statements, I'd end up needing to tell the user that their input was wrong and exit the program if they
         typed in something that isn't allowed. I wrote another function called <code>incorrect_answer()</code> that tells the user their input is wrong
         and exits the program after. This saved me alot of time and lines of code, this will also help me change the incorrect answer reaction across the
         whole program by only re-writing one section of code if needs be.
@@ -185,9 +198,10 @@
         <br>
         I start by asking for the user's name, then greeting them with their inputted name to add a welcoming element to the program.
         <br>
-        <br>
-        <h5><b>Core Logic</b></h5>
-        <br>
+        <br><br>
+        <h5><b><i>Core Logic</i></b></h5>
+        In this section I'll delve deeper into my core logic and how my code works proceduraly.
+        <hr>
         Now I get into the core logic of the program, esentially it's just a series of IF/ELIF/ELSE statements, I start with the first statement by asking the user
         if their phone has gotten very wet.
         <br>
@@ -268,8 +282,89 @@
             <li><code>incorrect_answer()</code></li>
           </ul>
         </ol>
-      </p>
+        <br>
+        The rest of the program runs as described using the same logic and I cover the following problems:
+        <ul>
+          <li>Has your phone screen smashed?</li>
+          <li>Is your phone failing to charge?</li>
+          <li>Is your phone lost?</li>
+          <li>Is your phone turning off at random battery percentages?</li>
+        </ul>
+
+
+      <br><br><br>
+      <h4><b><i>Testing</i></b></h5>
+      <hr>
+      To test different elements of my program, I'm using something called a <b>test plan</b>.
       <br>
+      I'll use the <b>test plan</b> to test different scenarios and then compare the expected outcomes to the actual outcomes.
+      <br>
+      <br>
+      Here's my <b>test plan</b>:
+      <br>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Scenario</th>
+            <th>Data Used</th>
+            <th>Expected Outcome</th>
+            <th>Actual Outcome</th>
+            <th>Evaluation</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>An answer to a question that isn't allowed</td>
+            <td>Typing 'test' instead of 'y'/'n' when asked if my phone screen is smashed</td>
+            <td>To be told it's an incorrect answer and then the program will exit</td>
+            <td>I was told it's an incorrect answer and the program exited</td>
+            <td>This feature is working in my program</td>
+          </tr>
+          <tr>
+            <td>Solution for a user with a phone less than 3 years old that's running very slowly</td>
+            <td>Answering 'y' to if the user's phone is running very slowly and 'n' to if the user's phone is older than 3 years</td>
+            <td>To be told to take it to the nearest repair shop</td>
+            <td>I was told to take it to the nearest repair shop</td>
+            <td>This feature is working in my program</td>
+          </tr>
+          <tr>
+            <td>Inputting a blank name</td>
+            <td>Setting my name as ''</td>
+            <td>To be told it's an incorrect name and to exit</td>
+            <td>Program outputted 'Hello, '</td>
+            <td>This feature wasn't working, I forgot to add an IF statement checking wether or not the user inputted a blank name</td>
+          </tr>
+        </tbody>
+      </table>
+      From my test plan I only notice one thing that isn't behaving as expected (the blank name input) and it was fixed by adding a forgotten
+      IF statement.
+      <br><br><br>
+      <h4><b><i>Evaluation</i></b></h5>
+        <hr>
+        I feel as if I have achieved everything I set out to do from my analysis.
+        <br><br>
+        Now I'll use my success criteria to make sure that I have:
+        <br>
+        <ul>
+          <li>Have atleast 10 possible outcomes of the troubleshooting tree</li>
+          <ul>
+            <li>Yes, I have atleast 10 possible outcomes</li>
+          </ul>
+          <li>Handle any illegal inputs</li>
+          <ul>
+            <li>Yes, all potential illegal inputs are accounted for and dealt with approprietly within my program</li>
+          </ul>
+          <li>Always give some sort of solution, if nothing is found then just tell them to take it to the nearest repair shop</li>
+          <ul>
+            <li>Yes, no matter what order of answers is given by the user, a solution is always offered</li>
+          </ul>
+        </ul>
+        <br>
+        Great, I have completed my success criteria. My program also meets all requirements stated explicitly and implicitly within
+          the task
+
+      </p>
+      <br />
       <h5><b><i>Written by James Latham</i></b></h5>
       <br>
     </div>

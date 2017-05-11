@@ -19,7 +19,7 @@ def solution (msg):
 
 print "Welcome to James' troubleshooting program."
 # Reqest the user's name & store it in the 'name' variable
-name = sysinp("\nPlease enter your name: ")
+name = sysinp("Please enter your name: ")
 # Greet the user
 sysp("Hello, "+name)
 
@@ -90,7 +90,7 @@ else:
     # Their answer wasn't 'y' or 'n', tell them it's an incorrect answer and exit via the incorrect_answer() function
     incorrect_answer()
 
-# Ask the user if their phone is failing to charge, take their answer, convert it to lowercase and store in the 'phone_smashed' variable
+# Ask the user if their phone is failing to charge, take their answer, convert it to lowercase and store in the 'phone_wont_charge' variable
 phone_wont_charge = sysinp("Is your phone failing to charge? (y/n)").lower()
 # If the user typed 'y'
 if phone_wont_charge == 'y':
@@ -102,32 +102,62 @@ elif phone_wont_charge == 'n':
     pass
 # Else
 else:
+    # Their answer wasn't 'y' or 'n', tell them it's an incorrect answer and exit via the incorrect_answer() function
     incorrect_answer()
 
+# Ask the user if their phone is lost, take their answer, convert it to lowercase and store in the 'phone_lost' variable
 phone_lost = sysinp("Is your phone lost? (y/n)").lower()
+# If the user typed 'y'
 if phone_lost == 'y':
+    # Then tell them to contact their phone provider
     solution('Please contact your phone provider!')
+# Else if the user typed 'n'
 elif phone_lost == 'n':
+    # Move on
     pass
+# Else
 else:
+    # Their answer wasn't 'y' or 'n', tell them it's an incorrect answer and exit via the incorrect_answer() function
     incorrect_answer()
 
+# Ask the user if their phone is turning off at random percentages, take their answer, convert it to lowercase and store in the 'phone_battery_issues' variable
 phone_battery_issues = sysinp("Is your phone turning off at random battery percentages? (y/n)").lower()
+# If the user typed 'y'
 if phone_battery_issues == 'y':
+    # Ask the user if their phone is runnion iOS 10 or above, take their answer, convert it to lowercase and store in the 'iosten' variable
     iosten = sysinp("Is your phone running iOS 10 or above? (y/n)").lower()
+    # If the user typed 'y'
     if iosten == 'y':
+        # Ask the user if their phone is updated to the most recent version, take their answer, convert it to lowercase and store in the 'updated' variable
         updated = sysinp("Is your phone updated to the most recent version? (y/n)").lower()
+        # If the user typed 'y'
         if updated == 'y':
+            # Then tell them to take their phone to the nearest repair shop
             solution('Please take your phone to the nearest repair shop!')
+        # Else if the user typed 'n'
         elif updated == 'n':
+            # Then tell them to update to the most recent version
             solution('Please update to the most recent version!')
+        # Else
         else:
+            # Their answer wasn't 'y' or 'n', tell them it's an incorrect answer and exit via the incorrect_answer() function
             incorrect_answer()
+    # Else if the user typed 'n'
     elif iosten == 'n':
+        # Then tell them to take their phone to the nearest repair shop
         solution('Please take your phone to the nearest repair shop!')
+    # Else
     else:
+        # Their answer wasn't 'y' or 'n', tell them it's an incorrect answer and exit via the incorrect_answer() function
         incorrect_answer()
+# Else if the user typed 'n'
 elif phone_battery_issues == 'n':
+    # Move on
     pass
+# Else
 else:
+    # Their answer wasn't 'y' or 'n', tell them it's an incorrect answer and exit via the incorrect_answer() function
     incorrect_answer()
+
+# We have no solutions, tell them to take their phone to the nearest repair shop
+solution('Please take your phone to the nearest repair shop!')
