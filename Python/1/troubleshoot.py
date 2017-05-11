@@ -66,6 +66,7 @@ if phone_slow == 'y':
     # Else
     else:
         # Their answer wasn't 'y' or 'n', tell them it's an incorrect answer and exit via the incorrect_answer() function
+        incorrect_answer()
 # Else if the user typed 'n'
 elif phone_slow == 'n':
     # Move on
@@ -85,7 +86,7 @@ if phone_smashed == 'y':
 elif phone_smashed == 'n':
     # Move on
     pass
-# Else
+# Else
 else:
     # Their answer wasn't 'y' or 'n', tell them it's an incorrect answer and exit via the incorrect_answer() function
     incorrect_answer()
@@ -100,7 +101,7 @@ if phone_wont_charge == 'y':
 elif phone_wont_charge == 'n':
     # Move on
     pass
-# Else
+# Else
 else:
     # Their answer wasn't 'y' or 'n', tell them it's an incorrect answer and exit via the incorrect_answer() function
     incorrect_answer()
@@ -122,7 +123,7 @@ else:
 
 # Ask the user if their phone is turning off at random percentages, take their answer, convert it to lowercase and store in the 'phone_battery_issues' variable
 phone_battery_issues = sysinp("Is your phone turning off at random battery percentages? (y/n)").lower()
-# If the user typed 'y'
+# If the user typed 'y'
 if phone_battery_issues == 'y':
     # Ask the user if their phone is runnion iOS 10 or above, take their answer, convert it to lowercase and store in the 'iosten' variable
     iosten = sysinp("Is your phone running iOS 10 or above? (y/n)").lower()
@@ -142,15 +143,15 @@ if phone_battery_issues == 'y':
         else:
             # Their answer wasn't 'y' or 'n', tell them it's an incorrect answer and exit via the incorrect_answer() function
             incorrect_answer()
-    # Else if the user typed 'n'
+    # Else if the user typed 'n'
     elif iosten == 'n':
         # Then tell them to take their phone to the nearest repair shop
         solution('Please take your phone to the nearest repair shop!')
-    # Else
+    # Else
     else:
         # Their answer wasn't 'y' or 'n', tell them it's an incorrect answer and exit via the incorrect_answer() function
         incorrect_answer()
-# Else if the user typed 'n'
+# Else if the user typed 'n'
 elif phone_battery_issues == 'n':
     # Move on
     pass
