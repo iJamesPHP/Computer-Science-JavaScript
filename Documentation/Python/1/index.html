@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>James' Computer Science Hub</title>
+    <link href="../../../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../../css/documentation.css" rel="stylesheet">
+    <link href="../../../css/style.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <div class="jumbotron">
+      <div class="container">
+        <h1>James' Computer Science Hub</h1>
+        <h2>Documentation</h2>
+        <p>Read my documentation below.</p>
+        <a href="../../../index.html" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-home"></span>&nbsp; Home</a>
+      </div>
+    </div>
+    <div class="container">
+      <div class="page-header">
+          <h1>Python Troubleshooting Tree <small>My documentation for question 1 of the python controlled assesemnt</small></h1>
+      </div>
+      <h3>Task 1 <small>- Analyse, Evaluate and develop a basic troubleshooting program</small></h3>
+      <blockquote>
+        <p>
+          Analyse the requirements for this system and design, develop, test and evaluate a program to
+          interrogate the user about the nature of the device and the problem, leading to a solution or advice to
+          call the supplier. You will need to create a suitable troubleshooting tree for a mobile device. This should
+          be a demonstration version of the system with at least 10 possible outcomes, but need not include an
+          exhaustive list of potential problems or outcomes.</p>
+        <footer>A453 OCR CONTROLLED ASSESSMENT MATERIAL 3</footer>
+      </blockquote>
+      <br>
+      <h4><i>Analysis</i></h4>
+      <hr>
+      <p>
+        So, I need to develop a program where in which the user can find answers to common problems they might be having with their
+        mobile device.
+        <br>
+        I need to make this program short and sweet, my target consumers aren't looking for a beautified program, they just want to fix
+        their phone. This also saves me time and effort.
+        <br>
+        The first question I need to ask myself is what components of my programming knowledge am I going to have to use to develop this
+        program. I wrote a short list in my notebook in real life, here's what i wrote:
+        <br>
+        <ul>
+          <li>
+            IF / ELSE / ELIF Statements
+            <ul>
+              I need these statements to decypher what the user inputs and work out which solution I need to give the user
+            </ul>
+          </li>
+          <li>
+            Functions
+            <ul>
+              I'm going to use functions to tidy up my code and make sure I'm not repeating things too much, a quick use I
+              can think of is to write a function that displays a given message and then exits, this is for giving the
+              solutions.
+            </ul>
+          </li>
+        </ul>
+        For this I'm choosing to cover all the requirements by using a basic IF/ELIF/ELSE structured text-based program. This is because
+        a program like this is easy to create so therefore I can focus on functionality and features rather than a needlessly pretty graphical
+        based program.
+      </p>
+      <br>
+      <h4><i>Planning</i></h4>
+      <hr>
+      <p>
+        For my planning I've made a flowchart and also written some basic outline pseudocode to help display and demonstrate how my program will
+        function and what basic logic it will follow.
+        <br><br>
+        Here's my <b>flowchart</b>:
+        <br><br>
+        <img src="../../../images/Documentation/Python/1/flowchart.png" class="img-rounded" height="35%" width="35%" />
+        <br><br>
+        And here's my <b>pseudocode</b>:
+        <br>
+        <pre>
+          phone_very_wet = input("Has your phone gotten very wet? (y/n)") -> to lowercase
+          if phone_very_wet == 'y' then
+              print('Please take your phone to the nearest repair shop!')
+          elif phone_very_wet == 'n' then
+              phone_wet = input("Has your phone gotten wet at all? (y/n)") -> to lowercase
+              if phone_wet == 'y' then
+                  print('Please try leaving your phone in a bowl of dry rice overnight!')
+              elif phone_wet == 'n' then
+                  pass
+              else then
+                  exit()
+          else then
+              exit()
+
+          phone_slow = input("Is your phone running very slowly? (y/n)") -> to lowercase
+          if phone_slow == 'y' then
+              phone_old = input('Is your phone model more than 3 years old? (y/n)') -> to lowercase
+              if phone_old == 'y' then
+                  print("Upgrade your phone to a newer model!")
+              elif phone_old == 'n' then
+                  print("Conduct a hard reset on your phone!")
+              else then
+                  exit()
+          elif phone_slow == 'n' then
+              pass
+          else then
+              exit()
+
+          phone_smashed = input("Has your phone screen smashed? (y/n)") -> to lowercase
+          if phone_smashed == 'y' then
+              print('Please take your phone to the nearest repair shop!')
+          elif phone_smashed == 'n' then
+              pass
+          else then
+              exit()
+
+          phone_wont_charge = input("Is your phone failing to charge? (y/n)") -> to lowercase
+          if phone_wont_charge == 'y' then
+              print('Please clean out the charging port on your phone by blowing hard into it!')
+          elif phone_wont_charge == 'n' then
+              pass
+          else then
+              exit()
+
+          phone_lost = input("Is your phone lost? (y/n)") -> to lowercase
+          if phone_lost == 'y' then
+              print('Please contact your phone provider!')
+          elif phone_lost == 'n' then
+              pass
+          else then
+              exit()
+
+          phone_battery_issues = input("Is your phone turning off at random battery percentages? (y/n)") -> to lowercase
+          if phone_battery_issues == 'y' then
+              iosten = input("Is your phone running iOS 10 or above? (y/n)") -> to lowercase
+              if iosten == 'y' then
+                  updated = input("Is your phone updated to the most recent version? (y/n)") -> to lowercase
+                  if updated == 'y' then
+                      print('Please take your phone to the nearest repair shop!')
+                  elif updated == 'n' then
+                      print('Please update to the most recent version!')
+                  else then
+                      exit()
+              elif iosten == 'n' then
+                  print('Please take your phone to the nearest repair shop!')
+              else then
+                  exit()
+          elif phone_battery_issues == 'n' then
+              pass
+          else then
+              exit()
+        </pre>
+      </p>
+      <br>
+      <h4><i>Development</i></h4>
+      <hr>
+      <p>
+        Here's my <b>commented end code</b>:
+        <br>
+        https://gist.github.com/iJamesPHP/7772bc475fa93b5e1a3111f759997e9b
+      </p>
+      <br>
+      <h5><i>Discussion</i></h5>
+      <p>
+        In this section I'll try to describe the different aspects of my program, how they work and why I've chosen to do it that way.
+        <hr />
+        Rather than diving straight into the core logic, I start by defining functions that I'll find useful later in my program. I start by
+        defining a function called <code>sysp()</code>, I use this function instead of the <code>print()</code> function so that I can always
+        add the same prefix to all my outputs and structure them nicely.
+        <br>
+        <br>
+        I also wrote a function called <code>sysinp()</code>, this function is to add the same prefix as <code>sysp()</code> to input messages.
+        <br>
+        <br>
+        I found that in all of my IF statements, I'd end up needing to tell the user that their input input was wrong and exit the program if they
+        typed in something that isn't allowed. I wrote another function called <code>incorrect_answer()</code> that tells the user their input is wrong
+        and exits the program after. This saved me alot of time and lines of code, this will also help me change the incorrect answer reaction across the
+        whole program by only re-writing one section of code if needs be.
+        <br>
+        <br>
+        I also wrote a function called <code>solution()</code> that prints out a given solution and exits the program.
+        <br>
+        <br>
+        I start by asking for the user's name, then greeting them with their inputted name to add a welcoming element to the program.
+        <br>
+        <br>
+        <h5><b>Core Logic</b></h5>
+        <br>
+        Now I get into the core logic of the program, esentially it's just a series of IF/ELIF/ELSE statements, I start with the first statement by asking the user
+        if their phone has gotten very wet.
+        <br>
+        Then I follow this logic:
+        <ol>
+          <li>If the user typed 'y':</li>
+          <ul>
+            <li><code>solution()</code> -> Tell the user to take their phone to the nearest repair shop</li>
+            <li>Exit</li>
+          </ul>
+          <li>Else if the user typed 'n':</li>
+          <ul>
+            <li>Ask the user if their phone has gotten slightly wet</li>
+            <ol>
+              <li>If the user typed 'y':</li>
+              <ul>
+                <li><code>solution()</code> -> Tell the user to try leaving their phone in a bowl of dry rice overnight</li>
+              </ul>
+              <li>Else if the user typed 'n':</li>
+              <ul>
+                <li>Move on to the next statement</li>
+              </ul>
+              <li>Else:</li>
+              <ul>
+                <li><code>incorrect_answer()</code></li>
+              </ul>
+            </ol>
+          </ul>
+          <li>Else:</li>
+          <ul>
+            <li><code>incorrect_answer()</code></li>
+          </ul>
+        </ol>
+        <br>
+        <br>
+        Next I move onto the next statement by asking the user if their phone is running very slowly.
+        <br>
+        Then I follow this logic:
+        <ol>
+          <li>If the user typed 'y':</li>
+          <ul>
+            <li>Ask the user if their phone model is older than 3 years old</li>
+            <ol>
+              <li>If the user typed 'y':</li>
+              <ul>
+                <li><code>solution()</code> -> Tell the user to upgrade their phone to a newer one</li>
+              </ul>
+              <li>Else if the user typed 'n':</li>
+              <ul>
+                <li><code>solution()</code> -> Tell the user to take their phone to the nearest repair shop</li>
+              </ul>
+              <li>Else:</li>
+              <ul>
+                <li><code>incorrect_answer()</code></li>
+              </ul>
+            </ol>
+          </ul>
+          <li>Else if the user typed 'n':</li>
+          <ul>
+            <li>Ask the user if their phone has gotten slightly wet</li>
+            <ol>
+              <li>If the user typed 'y':</li>
+              <ul>
+                <li><code>solution()</code> -> Tell the user to try leaving their phone in a bowl of dry rice overnight</li>
+              </ul>
+              <li>Else if the user typed 'n':</li>
+              <ul>
+                <li>Move on to the next statement</li>
+              </ul>
+              <li>Else:</li>
+              <ul>
+                <li><code>incorrect_answer()</code></li>
+              </ul>
+            </ol>
+          </ul>
+          <li>Else:</li>
+          <ul>
+            <li><code>incorrect_answer()</code></li>
+          </ul>
+        </ol>
+      </p>
+      <br>
+      <h5><b><i>Written by James Latham</i></b></h5>
+      <br>
+    </div>
+
+    <footer class="footer">
+      <div class="container text-center">
+        <p class="text-muted" style="margin-top: 20px">Site written & designed by James Latham for UTC@MediaCityUK Computer Science Work</p>
+      </div>
+    </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="../../../bootstrap/js/bootstrap.min.js"></script>
+  </body>
+
+</html>
