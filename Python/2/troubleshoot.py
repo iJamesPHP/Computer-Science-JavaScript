@@ -27,7 +27,7 @@ keywords = {
     'slow'         : 'You may need to upgrade your phone',
     'audio'        : 'Try hard resetting your phone',
     'sound'        : 'Try hard resetting your phone',
-    'home button'  : 'Please take your phone to the nearest repair shop'
+    'home'  : 'Please take your phone to the nearest repair shop'
 }
 
 print "Welcome to James' troubleshooting program."

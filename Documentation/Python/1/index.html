@@ -21,7 +21,7 @@
     </div>
     <div class="container">
       <div class="page-header">
-          <h1>Python Troubleshooting Tree <small>My documentation for question 1 of the python controlled assesemnt</small></h1>
+          <h1>Python Troubleshooting Tree <small>My documentation for question 1 of the python controlled assesement</small></h1>
       </div>
       <h3>Task 1 <small>- Analyse, Evaluate and develop a basic troubleshooting program</small></h3>
       <blockquote>
@@ -305,6 +305,7 @@
       <table class="table table-striped">
         <thead>
           <tr>
+            <th>Feature</th>
             <th>Scenario</th>
             <th>Data Used</th>
             <th>Expected Outcome</th>
@@ -314,6 +315,7 @@
         </thead>
         <tbody>
           <tr>
+            <td>Handling illegal input</td>
             <td>An answer to a question that isn't allowed</td>
             <td>Typing 'test' instead of 'y'/'n' when asked if my phone screen is smashed</td>
             <td>To be told it's an incorrect answer and then the program will exit</td>
@@ -321,6 +323,7 @@
             <td>This feature is working in my program</td>
           </tr>
           <tr>
+            <td>Giving different solutions based on user's chices</td>
             <td>Solution for a user with a phone less than 3 years old that's running very slowly</td>
             <td>Answering 'y' to if the user's phone is running very slowly and 'n' to if the user's phone is older than 3 years</td>
             <td>To be told to take it to the nearest repair shop</td>
@@ -328,11 +331,20 @@
             <td>This feature is working in my program</td>
           </tr>
           <tr>
+            <td>Handling illegal input</td>
             <td>Inputting a blank name</td>
             <td>Setting my name as ''</td>
             <td>To be told it's an incorrect name and to exit</td>
             <td>Program outputted 'Hello, '</td>
-            <td>This feature wasn't working, I forgot to add an IF statement checking wether or not the user inputted a blank name</td>
+            <td>This feature wasn't working, I forgot to add an IF statement checking wether or not the user inputted a blank name, Fixed by adding the missing IF statement</td>
+          </tr>
+          <tr>
+            <td>Always giving a solution</td>
+            <td>Having no solution</td>
+            <td>Answering 'n' to every question</td>
+            <td>To be told to take my phone to the nearest repair shop</td>
+            <td>I was told to take my phone to the nearest repair shop</td>
+            <td>This feature is working in my program</td>
           </tr>
         </tbody>
       </table>

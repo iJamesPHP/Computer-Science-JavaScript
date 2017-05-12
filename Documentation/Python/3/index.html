@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>James' Computer Science Hub</title>
+    <link href="../../../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../../css/documentation.css" rel="stylesheet">
+    <link href="../../../css/style.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <div class="jumbotron">
+      <div class="container">
+        <h1>James' Computer Science Hub</h1>
+        <h2>Documentation</h2>
+        <p>Read my documentation below.</p>
+        <a href="../../../index.html" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-home"></span>&nbsp; Home</a>
+      </div>
+    </div>
+    <div class="container">
+      <div class="page-header">
+          <h1>Python Troubleshooting Tree <small>My documentation for question 1 of the python controlled assesment</small></h1>
+      </div>
+      <h3>Task 3 <small>- Analyse, Evaluate and develop a troubleshooting program that uses keywords</small></h3>
+      <blockquote>
+        <p>
+          Analyse the requirements for this system and design, develop, test and evaluate a program to provide
+          troubleshooting advice for several devices. The system should identify the device and load a file of
+          suitable questions and responses for that device. You will need to create two files to test the system,
+          for third or subsequent devices it is acceptable to show that they have been recognised with a simple
+          acknowledgement. This is a demonstration version of the system and need not deal with all potential
+          problems.
+        </p>
+        <footer>A453 OCR CONTROLLED ASSESSMENT MATERIAL 3</footer>
+      </blockquote>
+      <br>
+      <h4><i>Analysis</i></h4>
+      <hr>
+      <p>
+        So, I need to develop a program where in which the user can first tell the program what device and model they are having
+        issues with so that the program can load a different set of suitable question-answer pairs based on their device.
+        <br>
+        This program needs to incorporate a mechanism that transforms the user's input about their device into a concatendated filename.
+        For example: if the user types 'iphone' for the device, and typed '5s' for the model, the program will load <code>iphone5s.txt</code>
+        <br>
+        I'll also need to write logic that will create a file with their device information and issue as well as assign them a case number for
+        a support agent to access at a later date.
+        <br>
+        The first question I need to ask myself is what components of my programming knowledge am I going to have to use to develop this
+        program. I wrote a short list in my notebook in real life, here's what i wrote:
+        <br>
+        <ul>
+          <li>
+            IF / ELSE / ELIF Statements
+            <ul>
+              I need these statements to work out whether or not the user's device is supported and also wether or not there is a solution available.
+            </ul>
+          </li>
+          <li>
+            Functions
+            <ul>
+              I'm going to use functions to tidy up my code and make sure I'm not repeating things too much, a quick use I
+              can think of is to write a function that displays a given message with a set prefix.
+            </ul>
+          </li>
+          <li>
+            FOR Loops
+            <ul>
+              I'm going to use FOR loops to loop over the lines in my .txt files looking for the solution to the user's given issue.
+            </ul>
+          </li>
+          <li>
+            Arrays
+            <ul>
+              I'm going to use arrays to split up the issue-solution pairs within my .txt files.
+            </ul>
+          </li>
+          <li>
+            File accessing
+            <ul>
+              I'm going to use file accessing to load the device specific issue-solution pairs.
+            </ul>
+          </li>
+        </ul>
+        <br>
+        <br>
+        <h5><b><i>Success Criteria</i></b></h5>
+        In this section I'll list what I want to achieve with my program so that I can compare my end result to it in my evaluation.
+        <hr>
+        This is my <b>success criteria</b>:
+        <ul>
+          <li>Succesfully loop over the lines in the .txt files</li>
+          <li>Handle any illegal inputs</li>
+          <li>Always give some sort of solution, if nothing is found then store the info in a file for an agent</li>
+          <li>Offer tailored solutions based on the user's device</li>
+        </ul>
+      </p>
+      <br>
+      <h4><i>Planning</i></h4>
+      <hr>
+      <p>
+        For my planning I've made a flowchart and also written some basic outline pseudocode to help display and demonstrate how my program will
+        function and what basic logic it will follow.
+        <br><br>
+        Here's my <b>flowchart</b>:
+        <br><br>
+        <img src="../../../images/Documentation/Python/3/flowchart.png" class="img-rounded" height="50%" width="50%" />
+        <br><br>
+        And here's my <b>pseudocode</b>:
+        <br>
+        <pre>
+          device = input('What device are you having issues with?') -> to lowercase
+          model = sysinp('What model is it?') -> to lowercase
+          filename = device + model + '.txt'
+          if exists(filename) then
+              issue = input('What is your issue?') -> to lowercase
+              with open(filename,'r') as solutions do
+                  for solution in solutions do
+                      if issue in solution then
+                          finalSolution = solution -> split(':')[1] -> rstrip()
+                          print('Solution: '+finalSolution)
+                          exit()
+                      else then
+                          continue
+                  print('Sorry but we do not have a solution for you. We will log your issue with a case number for our agents to look at.')
+                  case_number = t.time() -> int() -> str()
+                  case = open('case-'+case_number+'.txt', 'w+')
+                  case.write('Case number: '+case_number+'\n\n')
+                  case.write('Device: '+device+'\n')
+                  case.write('Model: '+model+'\n\n')
+                  case.write('Issue: '+issue)
+                  print('An agent will get back to you. Your case number is: '+case_number)
+                  exit()
+          else then
+              print('Sorry, we do not support this device!')
+              exit()
+
+        </pre>
+      </p>
+      <br>
+      <h4><i>Development</i></h4>
+      <hr>
+      <p>
+        Here's my <b>commented end code</b>:
+        <br>
+        https://gist.github.com/iJamesPHP/cd560e7f236f5e55202a8bbb49d3214c
+      </p>
+      <br>
+      <h5><b><i>Discussion</i></b></h5>
+      <p>
+        In this section I'll describe the different aspects of my program, how they work and why I've chosen to do it that way.
+        <hr />
+        Rather than diving straight into the core logic, I start by defining functions that I'll find useful later in my program. I start by
+        defining a function called <code>sysp()</code>, I use this function instead of the <code>print()</code> function so that I can always
+        add the same prefix to all my outputs and structure them nicely.
+        <br>
+        <br>
+        I also wrote a function called <code>sysinp()</code>, this function is to add the same prefix as <code>sysp()</code> to input messages.
+        <br>
+        <br>
+        I also wrote a function called <code>check_blank()</code> that goes inside the <code>sysinp()</code> function to catch illegal blank inputs and alert the user then exit
+        the program.
+        <br><br>
+        <h5><b><i>Core Logic</i></b></h5>
+        In this section I'll delve deeper into my core logic and how my code works proceduraly.
+        <hr>
+        Now I get into the core logic of the program, it works by first taking the user's input for their device name and the device model, the program then
+        concatenates these two bits of data and appends '.txt' onto the end. If this file name doesnt exists, it's an unsupported device and the program exits.
+        If this file name does exist, it's a supported device and the file is read. The user then types their issue. Then each line of the file is looped over
+        and if it doesnt contain the user's issue then their device info and issue are stored in a .txt file with a case number for an agent, if it does contain
+        the user's issue then the relevant solution in the file is printed and the program exits.
+        <br>
+        <br>
+        I chose to use these logical steps in my program because it let's me cover the most important requirement, multi-device support via file accessing. By concatenating
+        the user's inputted data to load seperate issue-solution pair files, I can tailor the solutions to the user's issues based on their device.
+        <br>
+        <br>
+        I have files for these devices:
+        <ul>
+          <li><kbd>iphone5s</kbd></li>
+          <li><kbd>iphone5c</kbd></li>
+        </ul>
+        <br>
+        I could add more files to add support for more devices easily, this is good because it makes my program easily expandable.
+      <br><br><br>
+      <h4><b><i>Testing</i></b></h5>
+      <hr>
+      To test different elements of my program, I'm using something called a <b>test plan</b>.
+      <br>
+      I'll use the <b>test plan</b> to test different scenarios and then compare the expected outcomes to the actual outcomes.
+      <br>
+      <br>
+      Here's my <b>test plan</b>:
+      <br>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>Scenario</th>
+            <th>Data Used</th>
+            <th>Expected Outcome</th>
+            <th>Actual Outcome</th>
+            <th>Evaluation</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Handling illegal input</td>
+            <td>A user's input is blank</td>
+            <td>Typing '' as the device name</td>
+            <td>To be told it's an illegal input and the program will exit</td>
+            <td>I was told it was an illegal input and the program exited</td>
+            <td>This feature is working in my program</td>
+          </tr>
+          <tr>
+            <td>Offer tailored solutions based on the user's device</td>
+            <td>A user's iPhone 5S' touchid isn't working</td>
+            <td>Typing 'iphone' as the device, '5s' as the model and 'touchid isnt working' as the issue</td>
+            <td>To be told the solution is to try a hard reset and then the program will exit</td>
+            <td>I was told the solution was to try a hard reset and then the program exited</td>
+            <td>This feature is working in my program, the lines are being looped over to search for the correct solution for the user's issue for that device</td>
+          </tr>
+          <tr>
+            <td>Always giving a solution</td>
+            <td>Having an unsolvable issue</td>
+            <td>Typing 'iphone' as the device, '5c' as the model and 'i dont know how to describe it' as the issue</td>
+            <td>To be told there is no solution and that their issue and device information have been logged in a file with a case number</td>
+            <td>I was told there is no solution and my issue and device information had been logged to a .txt file with an attatched case number</td>
+            <td>This feature is working in my program</td>
+          </tr>
+        </tbody>
+      </table>
+      From my test plan I am satisfied with the reliable functionality of my program.
+      <br><br><br>
+      <h4><b><i>Evaluation</i></b></h5>
+        <hr>
+        I feel as if I have achieved everything I set out to do from my analysis.
+        <br><br>
+        Now I'll use my success criteria to make sure that I have:
+        <br>
+        <ul>
+          <li>Succesfully loop over the lines in the .txt files</li>
+          <ul>
+            <li>Yes, I loop over the lines in the device specific .txt files to find the solution to the user's issue</li>
+          </ul>
+          <li>Handle any illegal inputs</li>
+          <ul>
+            Yes, inputs that are blank are caught and the user is told that their input was incorrect and the program exits
+          </ul>
+          <li>Always give some sort of solution, if nothing is found then store the info in a file for an agent</li>
+          <ul>
+            <li>Yes, if we can't give a solution, their device info and issue are logged in a .txt file with a case number</li>
+          </ul>
+          <li>Offer tailored solutions based on the user's device</li>
+          <ul>
+            <li>Yes, by using multiple .txt files I can make the same question for different devices have tailored solutions</li>
+          </ul>
+        </ul>
+        Great, I have completed my success criteria. My program also meets all requirements stated explicitly and implicitly within
+          the task
+      </p>
+      <br />
+      <h5><b><i>Written by James Latham</i></b></h5>
+      <br>
+    </div>
+
+    <footer class="footer">
+      <div class="container text-center">
+        <p class="text-muted" style="margin-top: 20px">Site written & designed by James Latham for UTC@MediaCityUK Computer Science Work</p>
+      </div>
+    </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="../../../bootstrap/js/bootstrap.min.js"></script>
+  </body>
+
+</html>
